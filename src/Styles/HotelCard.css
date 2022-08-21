@@ -1,5 +1,11 @@
 .HotelCardWrapper{
 
+    margin-top:20px;
 
-    
+    flex-direction: column;
+    display: flex;
+    justify-content: centre;
+
+
+
 }

@@ -1,0 +1,15 @@
+.MainWrapper{
+
+
+    display :flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.Welcome{
+
+margin-top:2rem;
+font-size : 3rem;
+
+}
