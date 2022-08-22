@@ -1,10 +1,12 @@
 import React from 'react'
 import HotelCard from '../Cards/HotelCard.js';
-
+import image from '../AiraXing.jpg';
 
 function AllHotels() {
   return (
-    <HotelCard HotelName = "Test Hotel"/>
+    <div className = "ParentClass">
+    <HotelCard HotelName = "Test Hotel" status = "Active"  description = "This is the description" image ={image}/>
+    </div>
   )
   
 }
