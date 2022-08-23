@@ -11,9 +11,11 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { connectStorageEmulator } from 'firebase/storage';
 function AllHotels() {
 
   const [newName, setName] = useState("");
+  const [newSearch, setSearch] = useState("");
   const [newDescription, setDescription] = useState("");
   const [newStatus, setStatus] = useState("");
   const [newID, setID] = useState(0);
@@ -24,10 +26,29 @@ function AllHotels() {
     await addDoc(AllHotelCollection, { HotelName: newName, ID: newID , Description: newDescription , status : newStatus});
   };
 
+  
   const deleteHotel = async (name) => {
-    const userDoc = doc(db, "Hotels", name);
+    console.log(name);
+    const hotelID = await getId(name);
+    // console.log(hotelID);
+    const userDoc = doc(db, "Hotels", hotelID);
     await deleteDoc(userDoc);
   };
+
+  const getId =async (name) =>{
+
+    const getHotels = async () => {
+    
+      Hotels.map((hotel) =>{
+        // console.log(hotel.HotelName);
+        if(hotel.HotelName ==name){return hotel.id;}
+      });
+
+      return "";
+    };
+    return getHotels();
+
+  }
 
   useEffect(() => {
     const getHotels = async () => {
@@ -39,16 +60,20 @@ function AllHotels() {
   }, []);
   return (
     <div className = "ParentClass">
+     <div>
+      <input placeholder="Enter Post Title"/>
+    </div>
+    <div className = "AllHotels">
     {
       Hotels.map((hotel)=>{
-        console.log(Hotels.length);
+       
         return (
           <HotelCard HotelName = {hotel.HotelName} status = {hotel.status}  description = {hotel.Description} image ={image}/>
         );
       }
       )
     }
-
+</div>
     <div className= "addHotel">
     <input
         placeholder="Name"
