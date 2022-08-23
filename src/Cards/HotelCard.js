@@ -10,13 +10,13 @@ function HotelCard(props) {
     <div class="product-details">
     <div className = "wrapperName-Status"><h1>{props.HotelName}</h1> <h1>{props.status}</h1></div>
     
-    <span class="hint-star star">
+    {/* <span class="hint-star star">
       <i class="fa fa-star" aria-hidden="true"></i>
       <i class="fa fa-star" aria-hidden="true"></i>
       <i class="fa fa-star" aria-hidden="true"></i>
       <i class="fa fa-star" aria-hidden="true"></i>
       <i class="fa fa-star-o" aria-hidden="true"></i>
-    </span>
+    </span> */}
       
         <p class="information">{props.description}</p>
   
@@ -27,7 +27,7 @@ function HotelCard(props) {
     <button class="btn">
     
   
-     <span class="buy">Go To  Dashboard</span>
+     <div className="buy">Go To  Dashboard</div>
    </button>
     
   </div>
