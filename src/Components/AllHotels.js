@@ -27,6 +27,7 @@ function AllHotels() {
   };
 
   
+  
   const deleteHotel = async (name) => {
     console.log(name);
     const hotelID = await getId(name);
@@ -65,7 +66,7 @@ function AllHotels() {
     
     <div className = "AllHotels">
     {
-      Hotels.map((hotel)=>{
+      Hotels.filter(hotel => hotel.HotelName.toLowerCase().includes(newSearch)).map((hotel)=>{
        
         return (
           <HotelCard HotelName = {hotel.HotelName} status = {hotel.status}  description = {hotel.Description} image ={image}/>
