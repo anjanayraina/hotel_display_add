@@ -3,6 +3,7 @@ import HotelCard from '../Cards/HotelCard.js';
 import image from '../AiraXing.jpg';
 import {useState , useEffect } from 'react';
 import { db } from "../firebase.js";
+import '../Styles/AllHotels.css';
 import {
   collection,
   getDocs,
@@ -23,7 +24,14 @@ function AllHotels() {
   const AllHotelCollection = collection(db, "Hotels");
 
   const createHotel = async () => {
+
+    if(newName == "" || newDescription == "" || newStatus == ""){
+
+      alert("Please Add Valid Values");
+      return ;
+    }
     await addDoc(AllHotelCollection, { HotelName: newName, ID: newID , Description: newDescription , status : newStatus});
+    window.location.reload()
   };
 
   
@@ -62,11 +70,16 @@ function AllHotels() {
   return (
     <div className = "ParentClass">
     
-      <input placeholder="Search Hotel" className = "Search" onChange = {e=> setSearch(e.target.value)}/>
-    
+      <div class="box">
+    <form name="search">
+        <input type="text" className="input" name="txt" onmouseout="this.value = ''; this.blur();"  onChange = {e=> setSearch(e.target.value)} />
+    </form>
+    <i class="fas fa-search"></i>
+
+</div>
     <div className = "AllHotels">
     {
-      Hotels.filter(hotel => hotel.HotelName.toLowerCase().includes(newSearch)).map((hotel)=>{
+      Hotels.filter(hotel => hotel.HotelName.toLowerCase().includes(newSearch.toLowerCase())).map((hotel)=>{
        
         return (
           <HotelCard HotelName = {hotel.HotelName} status = {hotel.status}  description = {hotel.Description} image ={image}/>
@@ -76,14 +89,14 @@ function AllHotels() {
     }
 </div>
     <div className= "addHotel">
-    <input
+    <input className = "nameHotel"
         placeholder="Name"
         onChange={(event) => {
           setName(event.target.value);
         }}
       />
       <input
-        
+        className = "nameHotel"
         placeholder="Description"
         onChange={(event) => {
           setDescription(event.target.value);
@@ -91,13 +104,14 @@ function AllHotels() {
       />
 
 <input    
+        className = "nameHotel"
         placeholder="Status"
         onChange={(event) => {
           setStatus(event.target.value);
         }}
       />
 
-      <button onClick={createHotel}> Create Hotel</button>
+      <button className = "create" onClick={createHotel}> Create Hotel</button>
       </div>
 
       <div className="deleteHotel">

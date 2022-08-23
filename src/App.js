@@ -7,7 +7,7 @@ import AddHotelForm from './Components/AddHotelForm.js';
 function App() {
   return (
     <div className="App">
-    <div>this is the Heading </div>
+   <Dashboard/>
       <AllHotels/> 
 
     
