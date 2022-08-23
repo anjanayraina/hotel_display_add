@@ -46,7 +46,7 @@ function AllHotels() {
 
       return "";
     };
-    return getHotels();
+    return await getHotels();
 
   }
 
@@ -60,9 +60,9 @@ function AllHotels() {
   }, []);
   return (
     <div className = "ParentClass">
-     <div>
-      <input placeholder="Enter Post Title"/>
-    </div>
+    
+      <input placeholder="Search Hotel" className = "Search" onChange = {e=> setSearch(e.target.value)}/>
+    
     <div className = "AllHotels">
     {
       Hotels.map((hotel)=>{
