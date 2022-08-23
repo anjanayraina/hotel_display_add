@@ -115,21 +115,21 @@ function AllHotels() {
       </div>
 
       <div className="deleteHotel">
-    <input
+    {/* <input
         placeholder="Name"
         onChange={(event) => {
           setName(event.target.value);
         }}
-      />
+      /> */}
    
-   <button
+   {/* <button
               onClick={() => {
                 deleteHotel(newName);
               }}
             >
               {" "}
               Delete Hotel
-            </button>
+            </button> */}
       </div>
     </div>
   )
